@@ -1,0 +1,7 @@
+{
+  "name": "doc-kyc",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
