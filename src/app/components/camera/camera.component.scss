@@ -1,0 +1,46 @@
+.actionBtn {
+  margin-top: 5px;
+  margin-bottom: 2px;
+  font-size: 1.2em;
+}
+
+.snapshot {
+  text-align: center;
+  img {
+    max-width: 800px;
+    max-height: 800px;
+  }
+}
+
+ul.links {
+  padding-bottom: 20px;
+}
+
+.container{
+  background: url('../../../assets/images/bg.jpeg');
+
+  z-index: 100 !important;
+  height: 100vh;
+
+
+}
+
+.mtn{
+  z-index: 500000;
+}
+
+
+.info-bar {
+  position: absolute;
+  width: 100% !important;
+  height: 20vh;
+  background: #000000;
+  z-index: 10001 !important;
+  opacity: 0.5;
+  padding: 0.5em;
+}
+
+.info-bar h5 {
+  color: #ffffff;
+  opacity: 1 !important;
+}

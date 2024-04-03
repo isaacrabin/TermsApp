@@ -24,3 +24,159 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+@font-face {
+  font-family: 'roboto_medium';
+  src: url('./assets/fonts/BentonSans\ Medium.otf');
+}
+
+@font-face {
+  font-family: 'roboto_regular';
+  src: url('./assets/fonts/BentonSans\ Regular.otf');
+}
+
+@font-face {
+  font-family: 'roboto_light';
+  src: url('./assets/fonts/BentonSans\ Regular.otf');
+}
+
+
+html,
+body {
+  // background-color: #e0e0e0;
+  // background: linear-gradient(rgba(0, 68, 255, 0.794), rgba(10, 34, 64, 1));
+
+  background-color: #f3f3f4;
+  // background-color: #ffffff;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 810px !important;
+}
+
+/* Transparent standard */
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+/* Show background if class is active */
+.show-background {
+  border-style: none;
+  background: var(--ion-color-primary);
+}
+
+/* Remove bottom border on md */
+.header-md::after {
+  background-image: none;
+}
+
+/* Remove bottom border on ios */
+.header-ios ion-toolbar:last-child {
+  --border-width: 0;
+}
+
+/************
+INPUT FIELDS
+*************/
+
+.validation-error {
+  margin-left: 20px !important;
+}
+
+.label-stacked.sc-ion-label-md-h {
+  margin-bottom: 10px !important;
+}
+
+.native-input.sc-ion-input-md {
+  padding-left: 10px !important;
+}
+
+.native-input.sc-ion-input-ios {
+  padding-left: 10px !important;
+}
+
+.ionic-selectable-label-stacked {
+  padding-left: 10px !important;
+}
+
+ion-item {
+  --background: none;
+  opacity: 1;
+}
+
+ion-label {
+  color: #707070 !important;
+  font-size: 100% !important;
+  font-weight: 300 !important;
+  font-family: roboto_regular !important;
+}
+ion-input {
+  padding-left: 10px !important;
+  font-family: roboto_regular !important;
+}
+
+ion-button {
+  font-family: roboto_medium !important;
+}
+
+ion-input,
+ion-select,
+ionic-selectable,
+ion-datetime {
+  border: 1px solid #757575;
+  border-radius: 8px !important;
+  padding: 10px;
+  font-size: 1em !important;
+}
+
+ion-item ion-label {
+  margin-top: 4vh !important;
+}
+
+ion-input,
+ion-select,
+ionic-selectable {
+  ::placeholder {
+    font-size: 1em !important;
+    margin-left: 15px !important;
+  }
+}
+
+.description {
+  font-family: roboto_regular !important;
+  font-size: rem-calc(16) !important;
+}
+.subtitle {
+  font-family: roboto_medium !important;
+}
+
+.iconSize {
+  font-size: 32px !important;
+}
+
+.item.sc-ion-label-md-h, .item .sc-ion-label-md-h{
+  white-space: normal !important;
+ }
+
+.item.sc-ion-label-ios-h, .item .sc-ion-label-ios-h{
+  white-space: normal !important;
+}
+
+  /*
+    Design elements restricted to MOBILE SCREEN only
+*/
+@media(max-width: 768px) {
+  .desktop-content {
+    display: none;
+  }
+}
+
+/*
+    Design element restricted to DESKTOP SCREEN only
+*/
+@media(min-width: 768px) {
+
+  .mobile-content {
+    display: none;
+  }
+}

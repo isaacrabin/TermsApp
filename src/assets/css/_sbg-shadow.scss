@@ -1,0 +1,25 @@
+%sbg-shadow-avatar {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.32);
+}
+
+%sbg-shadow {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.32);
+}
+
+%sbg-shadow-hover:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.32);
+}
+
+@mixin sbg-shadow-avatar {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.32);
+}
+
+@mixin sbg-shadow {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.32);
+}
+
+@mixin sbg-shadow-hover {
+  :hover {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.32);
+  }
+}

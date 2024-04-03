@@ -1,20 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="image-ill">
+    <img src="assets/images/id_trns.png" alt="">
   </div>
+  <ion-title class="ion-margin-top ion-text-start">
+    Welcome <br> to JM Accounts
+  </ion-title>
+  <div style="padding: 20px 20px 20px 20px;">
+    <p>As part of the onboarding process you need to upload a copy of your ID and passport photo</p>
+  </div>
+<div class="uk-flex uk-flex-center uk-margin-xlarge-top">
+
+  <ion-button (click)="openTerms()" color="primary" mode="ios"
+  class="slide-info__btn ion-margin-top "
+  fill="solid" expand="block" shape="round"> Proceed to Upload
+</ion-button>
+</div>
+
 </ion-content>

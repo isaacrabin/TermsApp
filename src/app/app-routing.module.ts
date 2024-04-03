@@ -7,6 +7,15 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'selfie',
+    loadChildren: () => import('./selfie/selfie.module').then( m => m.SelfiePageModule)
+  },
+  {
+    path: 'docs-upload',
+    loadChildren: () => import('./docs/docs.module').then( m => m.DocsPageModule)
+  },
+
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

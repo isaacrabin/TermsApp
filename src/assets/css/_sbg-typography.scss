@@ -1,0 +1,569 @@
+@import 'sbg-functions';
+
+$font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+// Private variables. Do not use these directly ----------------------
+$tx1-font-size: rem-calc(32);
+$tx2-5-font-size: rem-calc(28);
+$tx2-font-size: rem-calc(20);
+$tx3-font-size: rem-calc(18);
+$tx4-font-size: rem-calc(16);
+$tx5-font-size: rem-calc(14);
+$tx6-font-size: rem-calc(12);
+$tx7-font-size: rem-calc(10);
+
+$font-weight-light: 300 !default;
+$font-weight-regular: 400 !default;
+$font-weight-medium: 500 !default;
+
+@mixin text($font-size) {
+  font-family: $font-family;
+  color: var(--FONT-MEDIUM-COLOR);
+  font-weight: $font-weight-regular;
+  font-size: $font-size;
+  letter-spacing: -.01em;
+  line-height: normal;
+}
+
+%weight-light {
+  font-weight: $font-weight-light;
+}
+
+%weight-reg {
+  font-weight: $font-weight-regular;
+}
+
+%weight-med {
+  font-weight: $font-weight-medium;
+}
+
+%color-light {
+  color: var(--FONT-LIGHT-COLOR);
+}
+
+%color-med {
+  color: var(--FONT-MEDIUM-COLOR);
+}
+
+%color-dark {
+  color: var(--FONT-DARK-COLOR);
+}
+
+%action {
+  color: var(--PRIMARY-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+%positive {
+  color: var(--POSITIVE-COLOR);
+}
+
+%negative {
+  color: var(--NEGATIVE-COLOR);
+}
+
+@mixin link {
+  color: var(--PRIMARY-COLOR);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+%link {
+  @include link;
+}
+
+%inverse {
+  color: var(--WHITE-COLOR);
+}
+// End private variables ---------------------------------------------
+
+@mixin t1 {
+  @include text($tx1-font-size);
+}
+
+@mixin t1-inverse {
+  @include text($tx1-font-size);
+  color: var(--WHITE-COLOR);
+}
+
+@mixin t1-positive {
+  @include text($tx1-font-size);
+  color: var(--POSITIVE-COLOR);
+}
+
+@mixin t1-negative {
+  @include text($tx1-font-size);
+  color: var(--NEGATIVE-COLOR);
+}
+
+%t1 {
+  @include t1;
+  &-inverse {
+    @include t1-inverse;
+  }
+  &-positive {
+    @include t1-positive
+  }
+  &-negative {
+    @include t1-negative
+  }
+}
+
+@mixin t2-5 {
+  @include text($tx2-5-font-size);
+}
+
+@mixin t2-5-positive {
+  @include text($tx2-5-font-size);
+  color: var(--POSITIVE-COLOR);
+}
+
+@mixin t2-5-negative {
+  @include text($tx2-5-font-size);
+  color: var(--NEGATIVE-COLOR);
+}
+
+%t2-5 {
+  @include t2-5;
+  &-positive {
+    @include t2-5-positive
+  }
+  &-negative {
+    @include t2-5-negative
+  }
+}
+
+@mixin t2 {
+  @include text($tx2-font-size);
+  color: var(--FONT-DARK-COLOR);
+  font-weight: $font-weight-light;
+}
+
+@mixin t2-weight-med {
+  @include text($tx2-font-size);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t2-weight-med-color-med {
+  @include text($tx2-font-size);
+  font-weight: $font-weight-medium;
+  color: var(--FONT-MEDIUM-COLOR);
+}
+
+@mixin t2-weight-reg-color-med {
+  @include text($tx2-font-size);
+  color: var(--FONT-MEDIUM-COLOR);
+}
+
+@mixin t2-inverse {
+  @include t2;
+  color: var(--WHITE-COLOR);
+}
+
+@mixin t2-weight-reg-inverse {
+  @include text($tx2-font-size);
+  font-weight: $font-weight-medium;
+  color: var(--WHITE-COLOR);
+}
+
+@mixin t2-weight-med-inverse {
+  @include text($tx2-font-size);
+  color: var(--WHITE-COLOR);
+}
+
+@mixin t2-positive {
+  @include t2;
+  color: var(--POSITIVE-COLOR);
+}
+
+@mixin t2-negative {
+  @include t2;
+  font-weight: $font-weight-medium;
+  color: var(--NEGATIVE-COLOR);
+}
+
+%t2 {
+  @include t2;
+  &-weight-med {
+    @include t2-weight-med;
+  }
+  &-weight-med-color-med {
+    @include t2-weight-med-color-med;
+  }
+  &-weight-reg-color-med {
+    @include t2-weight-reg-color-med;
+  }
+  &-inverse {
+    @include t2-inverse;
+  }
+  &-weight-reg-inverse {
+    @include t2-weight-reg-inverse;
+  }
+  &-weight-med-inverse {
+    @include t2-weight-med-inverse;
+  }
+  &-positive {
+    @include t2-positive;
+  }
+  &-negative {
+    @include t2-negative;
+  }
+}
+
+@mixin t3 {
+  @include text($tx3-font-size);
+  color: var(--FONT-DARK-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t3-action {
+  @include text($tx3-font-size);
+  color: var(--PRIMARY-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t3-action-weight-reg {
+  @include text($tx3-font-size);
+  color: var(--PRIMARY-COLOR);
+}
+
+@mixin t3-inverse {
+  @include text($tx3-font-size);
+  color: var(--WHITE-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t3-inverse-weight-reg {
+  @include text($tx3-font-size);
+  color: var(--WHITE-COLOR);
+}
+
+%t3 {
+  @include t3;
+  &-action {
+    @include t3-action;
+  }
+  &-action-weight-reg {
+    @include t3-action-weight-reg;
+  }
+  &-inverse {
+    @include t3-inverse;
+  }
+  &-inverse-weight-reg {
+    @include t3-inverse-weight-reg;
+  }
+}
+
+@mixin t4 {
+  @include text($tx4-font-size);
+}
+
+@mixin t4-weight-med {
+  @include text($tx4-font-size);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t4-weight-med-color-med {
+  @include text($tx4-font-size);
+  font-weight: $font-weight-medium;
+  color: var(--FONT-MEDIUM-COLOR);
+}
+
+@mixin t4-weight-med-color-dark {
+  @include text($tx4-font-size);
+  font-weight: $font-weight-medium;
+  color: var(--FONT-DARK-COLOR);
+}
+
+@mixin t4-action {
+  @include text($tx4-font-size);
+  color: var(--PRIMARY-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t4-inverse {
+  @include text($tx4-font-size);
+  color: var(--WHITE-COLOR);
+
+}
+
+@mixin t4-inverse-weight-med {
+  @include text($tx4-font-size);
+  color: var(--WHITE-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t4-positive {
+  @include text($tx4-font-size);
+  color: var(--POSITIVE-COLOR);
+}
+
+@mixin t4-negative {
+  @include text($tx4-font-size);
+  color: var(--NEGATIVE-COLOR);
+}
+
+%t4 {
+  @include t4;
+  &-weight-med {
+    @include t4-weight-med;
+  }
+  &-weight-med-color-med {
+    @include t4-weight-med-color-med;
+  }
+  &-weight-med-color-dark {
+    @include t4-weight-med-color-dark;
+  }
+  &-action {
+    @include t4-action;
+  }
+  &-inverse {
+    @include t4-inverse;
+  }
+  &-inverse-weight-med {
+    @include t4-inverse-weight-med;
+  }
+  &-positive {
+    @include t4-positive;
+  }
+  &-negative {
+    @include t4-negative;
+  }
+}
+
+@mixin t5 {
+  @include text($tx5-font-size);
+}
+
+@mixin t5-color-light {
+  @include text($tx5-font-size);
+  color: var(--FONT-LIGHT-COLOR);
+}
+
+@mixin t5-weight-med {
+  @include text($tx5-font-size);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t5-weight-med-color-dark {
+  @include text($tx5-font-size);
+  font-weight: $font-weight-medium;
+  color: var(--FONT-DARK-COLOR);
+}
+
+@mixin t5-action {
+  @include text($tx5-font-size);
+  color: var(--PRIMARY-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t5-action-weight-reg {
+  @include text($tx5-font-size);
+  color: var(--PRIMARY-COLOR);
+}
+
+@mixin t5-inverse {
+  @include text($tx5-font-size);
+  color: var(--WHITE-COLOR);
+}
+
+@mixin t5-weight-med-inverse {
+  @include text($tx5-font-size);
+  color: var(--WHITE-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t5-link {
+  @include text($tx5-font-size);
+  @include link;
+}
+
+@mixin t5-link-inverse {
+  @include text($tx5-font-size);
+  color: var(--WHITE-COLOR);
+}
+
+@mixin t5-positive {
+  @include text($tx5-font-size);
+  color: var(--POSITIVE-COLOR);
+}
+
+@mixin t5-negative {
+  @include text($tx5-font-size);
+  color: var(--NEGATIVE-COLOR);
+}
+
+@mixin t5-negative-weight-med {
+  @include text($tx5-font-size);
+  color: var(--NEGATIVE-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+%t5 {
+  @include t5;
+  &-color-light {
+    @include t5-color-light;
+  }
+  &-weight-med {
+    @include t5-weight-med;
+  }
+  &-weight-med-color-dark {
+    @include t5-weight-med-color-dark;
+  }
+  &-action {
+    @include t5-action;
+  }
+  &-action-weight-reg {
+    @include t5-action-weight-reg;
+  }
+  &-inverse {
+    @include t5-inverse;
+  }
+  &-weight-med-inverse {
+    @include t5-weight-med-inverse;
+  }
+  &-link {
+    @include t5-link;
+  }
+  &-link-inverse {
+    @include t5-link-inverse;
+  }
+  &-positive {
+    @include t5-positive;
+  }
+  &-negative {
+    @include t5-negative;
+  }
+  &-negative-weight-med {
+    @include t5-negative-weight-med;
+  }
+}
+
+@mixin t6 {
+  @include text($tx6-font-size);
+  color: var(--FONT-LIGHT-COLOR);
+}
+
+@mixin t6-color-med {
+  @include text($tx6-font-size);
+  color: var(--FONT-MEDIUM-COLOR);
+}
+
+@mixin t6-weight-med-color-med {
+  @include text($tx6-font-size);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t6-weight-med-color-dark {
+  @include text($tx6-font-size);
+  font-weight: $font-weight-medium;
+  color: var(--FONT-DARK-COLOR);
+}
+
+@mixin t6-action {
+  @include text($tx6-font-size);
+  color: var(--PRIMARY-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t6-inverse {
+  @include text($tx6-font-size);
+  color: var(--WHITE-COLOR);
+}
+
+@mixin t6-inverse-weight-med {
+  @include text($tx6-font-size);
+  color: var(--WHITE-COLOR);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t6-link {
+  @include text($tx6-font-size);
+  @include link;
+}
+
+@mixin t6-link-inverse {
+  @include text($tx6-font-size);
+  @include link;
+  color: var(--WHITE-COLOR);
+}
+
+@mixin t6-positive {
+  @include text($tx6-font-size);
+  color: var(--POSITIVE-COLOR);
+}
+
+@mixin t6-negative {
+  @include text($tx6-font-size);
+  color: var(--NEGATIVE-COLOR);
+}
+
+%t6 {
+  @include t6;
+  &-color-med {
+    @include t6-color-med;
+  }
+  &-weight-med {
+    @include t6-weight-med-color-med;
+  }
+  &-weight-med-color-dark {
+    @include t6-weight-med-color-dark;
+  }
+  &-action {
+    @include t6-action;
+  }
+  &-inverse {
+    @include t6-inverse;
+  }
+  &-inverse-weight-med {
+    @include t6-inverse-weight-med;
+  }
+  &-link {
+    @include t6-link;
+  }
+  &-link-inverse {
+    @include t6-link;
+  }
+  &-positive {
+    @include t6-positive;
+  }
+  &-negative {
+    @include t6-negative;
+  }
+}
+
+@mixin t7 {
+  @include text($tx7-font-size);
+  color: var(--FONT-LIGHT-COLOR);
+}
+
+@mixin t7-weight-med {
+  @include text($tx7-font-size);
+  font-weight: $font-weight-medium;
+}
+
+@mixin t7-positive {
+  @include text($tx7-font-size);
+  color: var(--POSITIVE-COLOR);
+}
+
+@mixin t7-negative {
+  @include text($tx7-font-size);
+  color: var(--NEGATIVE-COLOR);
+}
+
+%t7 {
+  @include t7;
+
+  &-weight-med {
+    @include t7-weight-med;
+  }
+
+  &-positive {
+    @include t7-positive;
+  }
+
+  &-negative {
+    @include t7-negative;
+  }
+}

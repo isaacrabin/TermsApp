@@ -1,0 +1,94 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+<div style="height: 100vh; overflow-y: scroll;">
+  <div style="height: 30vh;">
+    <div style="padding-left: 20px; padding-top:30px;">
+      <h4 class="browse ion-margin-top" style="width: 80%;">We need to validate your documents. Please take a photo of your
+        <span style="color: #F7931E;"><strong>National ID</strong>
+        </span>, <span style="color: #F7931E;"><strong>Signature </strong>
+        </span> & <span style="color: #F7931E;"><strong>Selfie</strong>
+        </span>
+      </h4>
+    </div>
+  </div>
+  <div style="height: 70vh;" class="uk-flex-center" data-frmcontainer="Identification documents form" >
+    <div style="height: 25%; justify-content: center; " class="uk-flex-center" (click)="selectDocType('ID')">
+      <div class="uk-container uk-container-xsmall">
+        <div class="uk-card uk-card-default uk-card-body  identification-cards" >
+          <div class="uk-text-center" uk-grid>
+            <div class="uk-width-3-4">
+              <h4 class="browse2 uk-align-left"><strong>National Id</strong></h4>
+            </div>
+            <div class="uk-width-1-4">
+              <span class="uk-align-right" >
+                <ion-icon class="iconSize" style="color: rgb(7, 7, 7);" name="chevron-forward-outline"></ion-icon>
+              </span>
+              <!-- <span class="uk-align-right" uk-spinner="ratio: 1"></span> -->
+              <!-- <span class="uk-align-right" >
+                <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 25%; justify-content: center;" (click)="selectDocType('SIGNATURE')">
+      <div class="uk-container uk-container-xsmall">
+        <div class="uk-card uk-card-default uk-card-body  identification-cards" >
+          <div class="uk-text-center" uk-grid>
+            <div class="uk-width-3-4">
+              <h4 class="browse2 uk-align-left"><strong>Signature</strong></h4>
+            </div>
+            <div class="uk-width-1-4">
+              <span class="uk-align-right" >
+                <ion-icon class="iconSize" style="color: rgb(7, 7, 7);" name="chevron-forward-outline"></ion-icon>
+              </span>
+              <!-- <span class="uk-align-right" uk-spinner="ratio: 1"></span> -->
+              <!-- <span class="uk-align-right" >
+                <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 25%; width: 100%; justify-content: center;" (click)="selectDocType('SELFIE')">
+      <div class="uk-container uk-container-xsmall">
+        <div class="uk-card uk-card-default uk-card-body  identification-cards" >
+          <div class="uk-text-center" uk-grid>
+            <div class="uk-width-3-4">
+              <h4 class="browse2 uk-align-left"><strong>Selfie</strong></h4>
+            </div>
+            <div class="uk-width-1-4">
+              <span class="uk-align-right" >
+                <ion-icon class="iconSize" style="color: rgb(7, 7, 7);" name="chevron-forward-outline"></ion-icon>
+              </span>
+              <!-- <span class="uk-align-right" uk-spinner="ratio: 1"></span> -->
+              <!-- <span class="uk-align-right" >
+                <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 25%;">
+      <div class="uk-margin-medium-bottom uk-margin-small-left  uk-margin-small-right uk-margin-small-top">
+        <ion-button class="ion-text-center" expand="block" mode="ios" shape="round" type="button"
+
+          (click)="proceedToPreferences()">
+          Continue
+        </ion-button>
+         <!-- <ion-button expand="block" shape="round" type="button"
+          (click)="proceedToPreferences()">
+          Continue
+        </ion-button>  -->
+      </div>
+    </div>
+  </div>

@@ -31,8 +31,16 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "styles": [
+              "./node_modules/ngx-toastr/toastr.css",
+              "./node_modules/uikit/dist/css/uikit.min.css",
+              "./node_modules/uikit/dist/css/uikit-core.min.css",
+              "src/global.scss",
+             "src/theme/variables.scss"],
+            "scripts": [
+              "./node_modules/uikit/dist/js/uikit.min.js",
+              "./node_modules/uikit/dist/js/uikit-icons.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -111,8 +119,16 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "styles": ["src/global.scss", "src/theme/variables.scss",
+            "./node_modules/uikit/dist/css/uikit.min.css",
+            "./node_modules/uikit/dist/css/uikit-core.min.css",
+            "./node_modules/ngx-toastr/toastr.css"
+
+          ],
+            "scripts": [
+              "./node_modules/uikit/dist/js/uikit.min.js",
+              "./node_modules/uikit/dist/js/uikit-icons.min.js"
+            ]
           },
           "configurations": {
             "ci": {
@@ -136,7 +152,8 @@
   "cli": {
     "schematicCollections": [
       "@ionic/angular-toolkit"
-    ]
+    ],
+    "analytics": "33b2507b-1e12-4466-ac9d-b8c603e7ea21"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {
