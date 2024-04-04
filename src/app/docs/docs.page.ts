@@ -70,17 +70,6 @@ export class DocsPage implements OnInit {
           const formData = new FormData();
           formData.append('file', this.identification.signatureFile);
           this.saveImage("signature", formData);
-          // if (this.dataStore.identification.nationalId) {
-          //   this.saveImage("signature", {
-          //     file: this.identification.signatureFile,
-          //     idType: "",
-          //     imageType: "SIGNATURE",
-          //     match: "",
-          //     nationalId: "",
-          //   });
-          // } else {
-          //   this.toastr.info("Scan ID First");
-          // }
         } else {
         }
       }
@@ -88,7 +77,7 @@ export class DocsPage implements OnInit {
     return await modal.present();
   }
 
-  scanPassport(){}
+
 
     // Save image
     async saveImage(side: string, payload:any) {
@@ -203,6 +192,8 @@ export class DocsPage implements OnInit {
       }
     }
 
-  complete(){}
+  complete(){
+    this.router.navigate(['complete']);
+  }
 
 }

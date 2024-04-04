@@ -12,17 +12,14 @@ import { DataStoreService } from 'src/app/_services/datastore.service';
 export class CameraComponent  implements OnInit {
 
 
-  @Input() side: string  = 'id_front';
+  @Input() side: string  = '';
    // toggle webcam on/off
    public showWebcam = true;
-   public allowCameraSwitch = true;
+   public allowCameraSwitch = false;
    public multipleWebcamsAvailable = false;
    public deviceId: string = '';
    base64File: string = '';
-   public videoOptions: MediaTrackConstraints = {
-     // width: {ideal: 1024},
-     // height: {ideal: 576}
-   };
+
    public errors: WebcamInitError[] = [];
 
    // latest snapshot
@@ -40,11 +37,21 @@ export class CameraComponent  implements OnInit {
    ){}
 
    public ngOnInit(): void {
-     WebcamUtil.getAvailableVideoInputs()
+       WebcamUtil.getAvailableVideoInputs()
        .then((mediaDevices: MediaDeviceInfo[]) => {
          this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
        });
    }
+
+   public get videoOptions(): MediaTrackConstraints {
+    const result: MediaTrackConstraints = {
+      facingMode: {ideal: 'environment'}
+    };
+    if (this.side === 'selfie') {
+        result.facingMode = { ideal: 'user' };
+    }
+    return result;
+}
 
    public triggerSnapshot(): void {
      this.trigger.next();

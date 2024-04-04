@@ -26,14 +26,14 @@
     </span>
   </h3>
   <div>
-    <webcam *ngIf="side !== 'selfie'"  class="mtn" [height]="300" [width]="800" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+    <webcam id="webcam" *ngIf="side !== 'selfie'"  class="mtn" [height]="300" [width]="800" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
             [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
             [videoOptions]="videoOptions"
             [imageQuality]="1"
             (cameraSwitched)="cameraWasSwitched($event)"
             (initError)="handleInitError($event)"
     ></webcam>
-    <webcam *ngIf="side === 'selfie'"  class="mtn" [height]="280" [width]="800" style="border-radius: 50%;" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+    <webcam id="webcam" *ngIf="side === 'selfie'"  class="mtn" [height]="280" [width]="800" style="border-radius: 50%;" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
     [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
     [videoOptions]="videoOptions"
     [imageQuality]="1"
@@ -79,7 +79,7 @@
   <img [src]="webcamImage.imageAsDataUrl"/>
 </div> -->
 
-<h4 *ngIf="errors.length > 0">Messages:</h4>
+<!-- <h4 *ngIf="errors.length > 0">Messages:</h4>
 <ul *ngFor="let error of errors">
   <li>{{error | json}}</li>
-</ul>
+</ul> -->

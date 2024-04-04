@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <div style="height: 25%; justify-content: center;" (click)="selectDocType('SIGNATURE')">
+    <!-- <div style="height: 25%; justify-content: center;" (click)="selectDocType('SIGNATURE')">
       <div class="uk-container uk-container-xsmall">
         <div class="uk-card uk-card-default uk-card-body  identification-cards" >
           <div class="uk-text-center" uk-grid>
@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div style="height: 25%; width: 100%; justify-content: center;" (click)="selectDocType('SELFIE')">
       <div class="uk-container uk-container-xsmall">
@@ -81,7 +81,7 @@
     <div style="height: 25%;">
       <div class="uk-margin-medium-bottom uk-margin-small-left  uk-margin-small-right uk-margin-small-top">
         <ion-button class="ion-text-center" expand="block" mode="ios" shape="round" type="button"
-          [disabled]="!loader.savedBack || !loader.savedFront || !loader.savedSignature || !loader.savedSelfie"
+          [disabled]="!loader.savedBack || !loader.savedFront || !loader.savedSelfie"
           (click)="complete()">
           Done
         </ion-button>
