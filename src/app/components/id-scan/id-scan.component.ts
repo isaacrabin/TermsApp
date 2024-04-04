@@ -56,6 +56,7 @@ export class IdScanComponent  implements OnInit {
         this.identification = await data.data.data;
         if(this.side === 'id_front'){
           this.loader.frontCaptured = true;
+          this.toastr.success("Front of ID Captured");
         }
         else{
           if(this.side === 'id_back' && this.loader.frontCaptured){
@@ -185,8 +186,7 @@ export class IdScanComponent  implements OnInit {
       next: (response: any) => {
         if (response.success) {
           this.loader.scanningBack = false;
-          const id = response.id.split(" ").join("");
-          // this.identification.nationalId = parseInt(id).toString(); //TODO looks like its truncating leading zero
+          const id = response.id.split(" ").join("")
           this.identification.nationalId = id;
           this.identification.ocrKey = response.key;
           // Verify ID
@@ -230,15 +230,6 @@ export class IdScanComponent  implements OnInit {
               form.append("documentId", nationalId);
               form.append("idType", "NATIONAL.ID");
               this.saveBackImage(form);
-
-              // this.saveBackImage({
-              //   file: this.identification.backIdFile,
-              //   idType: "NATIONAL_ID",
-              //   imageType: "ID_BACK",
-              //   match: "",
-              //   nationalId: this.identification.nationalId,
-              //   key: this.identification.ocrKey,
-              // });
             },
           },
         ],
