@@ -44,9 +44,7 @@ export class CameraComponent  implements OnInit {
    }
 
    public get videoOptions(): MediaTrackConstraints {
-    const result: MediaTrackConstraints = {
-      facingMode: {ideal: 'environment'}
-    };
+    const result: MediaTrackConstraints = {};
     if (this.side === 'selfie') {
         result.facingMode = { ideal: 'user' };
     }
@@ -112,9 +110,6 @@ export class CameraComponent  implements OnInit {
           this.dataStore.identification.signatureFile = await this.dataUrlToFile(
             this.dataStore.identification.signatureBase64
           );
-          console.log(this.dataUrlToFile(
-            this.dataStore.identification.signatureBase64
-          ))
           this.modalCtrl.dismiss({
             cancelled: false,
             data: this.dataStore.identification,
