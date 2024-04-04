@@ -16,26 +16,23 @@ export class ApiService {
 
     // Save Images
     saveFrontIDImage(payload: any): Observable<any> {
-      const formData = new FormData();
-      for (const key in payload) {
-        if (payload) {
-          formData.append(key, payload[key]);
-        }
-      }
-      return this.http.post(this.baseUrl + '/identity-doc-front', formData,{ headers: { 'Content-Type': 'multipart/form-data','descriptor':'bb4c5ae1-4ef8-4e96-acc2-a2579640b348' }});
+      return this.http.post(this.baseUrl + '/identity-doc-front', payload,{ headers: {'descriptor':'bb4c5ae1-4ef8-4e96-acc2-a2579640b348' }});
     }
 
     saveBackIDImage(payload: any): Observable<any> {
-      return this.http.post(this.baseUrl + '/identity-doc-back', payload,{ headers: { 'Content-Type': 'multipart/form-data','descriptor':'bb4c5ae1-4ef8-4e96-acc2-a2579640b348' }});
+      const boundary = this.generateBoundary();
+      return this.http.post(this.baseUrl + '/identity-doc-back', payload,{ headers: {'descriptor':'bb4c5ae1-4ef8-4e96-acc2-a2579640b348' }});
     }
 
     saveSignatureImage(payload: any): Observable<any> {
-      const formData = new FormData();
-      for (const key in payload) {
-        if (payload) {
-          formData.append(key, payload[key]);
-        }
-      }
-      return this.http.post(this.baseUrl + '/applicant-photo', formData);
+      return this.http.post(this.baseUrl + '/applicant-photo', payload,{ headers: {'descriptor':'bb4c5ae1-4ef8-4e96-acc2-a2579640b348' }});
+    }
+
+    saveSelfieImage(payload: any): Observable<any> {
+      return this.http.post(this.baseUrl + '/applicant-photo', payload,{ headers: {'descriptor':'bb4c5ae1-4ef8-4e96-acc2-a2579640b348' }});
+    }
+
+   generateBoundary() {
+      return "----" + new Date().getTime().toString(32);
     }
 }

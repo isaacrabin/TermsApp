@@ -1,0 +1,37 @@
+<div style="height: 100vh;overflow-y: scroll;">
+  <div>
+    <div class="uk-container uk-container-xsmall">
+      <div class="uk-flex uk-flex-center">
+        <!-- <div>
+          <img src="assets/icon/done.png" class="uk-margin-medium-top" height="150px" width="150px" alt="">
+        </div> -->
+        <div class="lottie-section">
+          <ng-lottie [options]="options"></ng-lottie>
+          <!-- <ng-lottie [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie> -->
+        </div>
+
+      </div>
+      <br>
+      <div class="uk-flex uk-flex-center">
+        <h4 class="browse ion-margin-top uk-text-center uk-padding">
+          <span style="color: #444444;"><strong>Congratulations! </strong>
+          </span><br>
+          <span class="description">
+            You have successfully completed the Cloudbook account activation process.
+            <!-- You will receive an email or SMS shortly with your account details. -->
+          </span>
+          <br><br>
+
+          <span class="description">Should you require more information, please contact our Customer Care team on
+            0711-000000.</span>
+        </h4>
+
+
+      </div>
+
+      <div class="uk-flex uk-flex-center">
+        <ion-button expand="block" fill="outline" (click)="done()">Close</ion-button>
+      </div>
+    </div>
+  </div>
+</div>

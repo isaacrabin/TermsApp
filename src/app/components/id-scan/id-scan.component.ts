@@ -8,6 +8,7 @@ import { DataStoreService } from 'src/app/_services/datastore.service';
 import { CameraComponent } from '../camera/camera.component';
 import { LoadingService } from 'src/app/_services/loader.service';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-id-scan',
@@ -20,6 +21,7 @@ export class IdScanComponent  implements OnInit {
   side: any;
   accountToOpen: any;
   loading:boolean = false;
+  ocrUrl: string = "https://onboarding.stanbicbank.co.ke/ocr";
 
   constructor(
     private modalCtrl: ModalController,
@@ -29,6 +31,7 @@ export class IdScanComponent  implements OnInit {
     private apiService: ApiService,
     private alertCtrl: AlertController,
     public loader: LoadingService,
+    private http: HttpClient
 
   ) {
     this.accountToOpen = localStorage.getItem('account-to-open');
@@ -56,13 +59,9 @@ export class IdScanComponent  implements OnInit {
         }
         else{
           if(this.side === 'id_back' && this.loader.frontCaptured){
+
           this.loader.backCaptured = true;
-          const formData = new FormData();
-          formData.append('file',await this.fileToBlob(this.dataStore.identification.backIdFile))
-          const payload = {
-            file: this.dataStore.identification.backIdFile
-          }
-          this.saveBackImage(formData);
+          this.scanBackId();
           }
           else{
             this.toastr.error('Capture front ID first');
@@ -112,7 +111,7 @@ export class IdScanComponent  implements OnInit {
             this.loader.savingFront = false;
             this.loader.savedFront = true;
             this.dataStore.identification.frontSaved = true;
-            this.router.navigate(["/onboarding/identification"], {
+            this.router.navigate(["/docs-upload"], {
               replaceUrl: true,
             });
           } else {
@@ -153,13 +152,9 @@ export class IdScanComponent  implements OnInit {
               this.loader.savingBack = false;
               this.loader.savedBack = true;
               this.dataStore.identification.backSaved = true;
-              this.saveFrontImage({
-                file: this.identification.frontIdFile,
-                idType: "NATIONAL_ID",
-                imageType: "ID_FRONT",
-                match: this.identification.frontIdOcrText,
-                nationalId: "",
-              });
+              var form: FormData = new FormData();
+              form.append("file", this.dataStore.identification.frontIdFile);
+              this.saveFrontImage(form);
             } else {
               this.loader.savingBack = false;
               this.loader.savedBack = false;
@@ -180,22 +175,75 @@ export class IdScanComponent  implements OnInit {
     }
   }
 
-  async fileToBlob(file: any): Promise<Blob> {
-    console.log(file);
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-            if (reader.result instanceof ArrayBuffer) {
-                resolve(new Blob([reader.result]));
-            } else {
-                reject(new Error('Failed to read file as ArrayBuffer'));
-            }
-        };
-        reader.onerror = () => {
-            reject(reader.error);
-        };
-        reader.readAsArrayBuffer(file);
-    });
-}
+  scanBackId(){
+    const payload = {
+      national_id: this.identification.backIdBase64,
+      document_type: "ID",
+    }
+    this.loader.scanningBack = true;
+    this.http.post(this.ocrUrl, payload).subscribe({
+      next: (response: any) => {
+        if (response.success) {
+          this.loader.scanningBack = false;
+          const id = response.id.split(" ").join("");
+          // this.identification.nationalId = parseInt(id).toString(); //TODO looks like its truncating leading zero
+          this.identification.nationalId = id;
+          this.identification.ocrKey = response.key;
+          // Verify ID
+          this.verifyID(this.identification.nationalId);
 
+        } else {
+          this.loader.scanningBack = false;
+          this.scanningSolutions();
+        }
+      },
+      error: (error) => {
+
+      }
+    })
+  }
+
+    // Verify that the ID scanned is for the user onboarding
+    async verifyID(nationalId: any) {
+      const alert = await this.alertCtrl.create({
+        backdropDismiss: false,
+        cssClass: "my-custom-class",
+        header: "CONFIRM",
+        message: `<h5>Please confirm that this is your National ID Number? \n
+                  Note: This number will be used to automatically fetch your KRA PIN
+                  </h5> \n \n
+                  <h1>${nationalId}<h1>
+                  `,
+        buttons: [
+          {
+            text: "NO",
+            role: "cancel",
+            cssClass: "secondary",
+            handler: (blah) => {
+              this.loader.scanningBack = false;
+            },
+          },
+          {
+            text: "YES",
+            handler: () => {
+              const form: FormData = new FormData();
+              form.append('file',this.dataStore.identification.backIdFile)
+              form.append("documentId", nationalId);
+              form.append("idType", "NATIONAL.ID");
+              this.saveBackImage(form);
+
+              // this.saveBackImage({
+              //   file: this.identification.backIdFile,
+              //   idType: "NATIONAL_ID",
+              //   imageType: "ID_BACK",
+              //   match: "",
+              //   nationalId: this.identification.nationalId,
+              //   key: this.identification.ocrKey,
+              // });
+            },
+          },
+        ],
+      });
+      await alert.present();
+    }
 }

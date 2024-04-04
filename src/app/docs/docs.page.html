@@ -25,13 +25,13 @@
               <h4 class="browse2 uk-align-left"><strong>National Id</strong></h4>
             </div>
             <div class="uk-width-1-4">
-              <span class="uk-align-right" >
+              <span class="uk-align-right" *ngIf="!loader.savedFront && !loader.savedBack">
                 <ion-icon class="iconSize" style="color: rgb(7, 7, 7);" name="chevron-forward-outline"></ion-icon>
               </span>
-              <!-- <span class="uk-align-right" uk-spinner="ratio: 1"></span> -->
-              <!-- <span class="uk-align-right" >
+              <span class="uk-align-right" uk-spinner="ratio: 1" *ngIf="loader.savingFront && loader.savingBack"></span>
+              <span class="uk-align-right" *ngIf="loader.savedFront && loader.savedBack">
                 <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
-              </span> -->
+              </span>
             </div>
           </div>
         </div>
@@ -45,13 +45,13 @@
               <h4 class="browse2 uk-align-left"><strong>Signature</strong></h4>
             </div>
             <div class="uk-width-1-4">
-              <span class="uk-align-right" >
+              <span class="uk-align-right" *ngIf="!loader.savedSignature && !loader.savingSignature">
                 <ion-icon class="iconSize" style="color: rgb(7, 7, 7);" name="chevron-forward-outline"></ion-icon>
               </span>
-              <!-- <span class="uk-align-right" uk-spinner="ratio: 1"></span> -->
-              <!-- <span class="uk-align-right" >
+              <span class="uk-align-right" uk-spinner="ratio: 1" *ngIf="loader.savingSignature"></span>
+              <span class="uk-align-right" *ngIf="loader.savedSignature">
                 <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
-              </span> -->
+              </span>
             </div>
           </div>
         </div>
@@ -66,13 +66,13 @@
               <h4 class="browse2 uk-align-left"><strong>Selfie</strong></h4>
             </div>
             <div class="uk-width-1-4">
-              <span class="uk-align-right" >
+              <span class="uk-align-right" *ngIf="!loader.savedSelfie && !loader.savingSelfie">
                 <ion-icon class="iconSize" style="color: rgb(7, 7, 7);" name="chevron-forward-outline"></ion-icon>
               </span>
-              <!-- <span class="uk-align-right" uk-spinner="ratio: 1"></span> -->
-              <!-- <span class="uk-align-right" >
+              <span class="uk-align-right" uk-spinner="ratio: 1" *ngIf="loader.savingSelfie"></span>
+              <span class="uk-align-right" *ngIf="loader.savedSelfie">
                 <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
-              </span> -->
+              </span>
             </div>
           </div>
         </div>
@@ -81,9 +81,9 @@
     <div style="height: 25%;">
       <div class="uk-margin-medium-bottom uk-margin-small-left  uk-margin-small-right uk-margin-small-top">
         <ion-button class="ion-text-center" expand="block" mode="ios" shape="round" type="button"
-
-          (click)="proceedToPreferences()">
-          Continue
+          [disabled]="!loader.savedBack || !loader.savedFront || !loader.savedSignature || !loader.savedSelfie"
+          (click)="complete()">
+          Done
         </ion-button>
          <!-- <ion-button expand="block" shape="round" type="button"
           (click)="proceedToPreferences()">

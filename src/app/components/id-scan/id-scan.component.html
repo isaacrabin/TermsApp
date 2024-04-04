@@ -15,14 +15,12 @@
         </span>
       </h4>
     </div>
-
-
   </div>
   <div>
     <div class="ion-padding">
       <div class="uk-container uk-container-xsmall">
         <div class="uk-card uk-card-default uk-width-1-1" (click)="openCamera('id_front')"
-          *ngIf="!loader?.savedFront">
+        *ngIf="!loader?.scanningFront && !loader?.savingFront && !loader?.savedFront">
           <div class="uk-card-media-top">
             <img src="assets/images/id_front.png" width="100%" alt="">
           </div>
@@ -49,13 +47,12 @@
           </div>
         </div>
         <div class="uk-card uk-card-default uk-width-1-1"
-        *ngIf="loader?.savedFront">
+        *ngIf="loader?.scanningFront || loader?.savingFront || loader?.savedFront">
         <div class="uk-text-center">
-          <span *ngIf="loader?.savedFront"><img class="uk-margin-small-top"
-              src="assets/images/id_saved.jpeg" width="90" alt=""></span>
-          <span *ngIf="loader?.savingFront" class="uk-margin-medium-top"
+          <span *ngIf="loader?.savedFront"><img class="uk-margin-medium-top" src="assets/icons/saved.png" alt=""></span>
+          <span *ngIf="!loader?.savedFront" class="uk-margin-medium-top"
             uk-spinner="ratio: 1"></span>
-          <p *ngIf="loader?.savedFront" class="uk-margin-small-bottom browse2"><strong>Fornt ID Saved</strong></p>
+          <!-- <p *ngIf="loader?.savedFront" class="uk-margin-small-bottom browse2"><strong>Fornt ID Saved</strong></p> -->
           <br>
           <p *ngIf="loader?.savingFront" class="uk-margin-small-bottom browse2"><strong>Saving Front of ID</strong>
           </p><br>
@@ -83,9 +80,11 @@
                   class="uk-button uk-button-text"><strong>Scan Back of ID</strong></a>
               </div>
               <div class="uk-width-1-4">
-                <span class="uk-align-right">
+                <span class="uk-align-right" *ngIf="!loader?.scanningBack">
                   <ion-icon class="iconSize" name="chevron-forward-outline"></ion-icon>
                 </span>
+                <span *ngIf="loader?.scanningBack" class="uk-margin-medium-top"
+                uk-spinner="ratio: 1"></span>
               </div>
             </div>
           </div>
@@ -93,13 +92,13 @@
         <div class="uk-card uk-card-default uk-width-1-1"
           *ngIf="loader?.scanningBack || loader?.savingBack || loader?.savedBack">
           <div class="uk-text-center">
-            <span *ngIf="loader?.savedBack"><img class="uk-margin-medium-top" src="assets/icon/saved.png" alt=""></span>
+            <span *ngIf="loader?.savedBack"><img class="uk-margin-medium-top" src="assets/icons/saved.png" alt=""></span>
             <span *ngIf="!loader?.savedBack" class="uk-margin-medium-top" uk-spinner="ratio: 1"></span>
             <p *ngIf="loader?.scanningBack" class="uk-margin-small-bottom browse2"><strong>Scanning Back of ID</strong>
             </p><br>
             <p *ngIf="loader?.savingBack" class="uk-margin-small-bottom browse2"><strong>Saving Back of ID</strong></p>
             <br>
-            <p *ngIf="loader?.savedBack" class="uk-margin-small-bottom browse2"><strong>Back of ID Saved</strong></p>
+            <p *ngIf="loader?.savedBack" class="uk-margin-small-bottom browse2 uk-text-success"><strong>Back of ID Saved</strong></p>
             <br>
           </div>
         </div>

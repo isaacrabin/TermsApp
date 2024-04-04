@@ -27,6 +27,7 @@ export class LoadingService {
   // Selfie
   detectingFace = false;
   savingSelfie = false;
+  savedSelfie = false;
 
   // Child
   savedCert = false;

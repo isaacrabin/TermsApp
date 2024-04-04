@@ -14,11 +14,18 @@ const routes: Routes = [
     path: 'docs-upload',
     loadChildren: () => import('./docs/docs.module').then( m => m.DocsPageModule)
   },
-
+  {
+    path: 'complete',
+    loadChildren: () => import('./complete/complete.module').then( m => m.CompletePageModule)
+  },
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'complete',
+    loadChildren: () => import('./complete/complete.module').then( m => m.CompletePageModule)
   },
 ];
 

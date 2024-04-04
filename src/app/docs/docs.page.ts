@@ -7,6 +7,7 @@ import { CameraComponent } from '../components/camera/camera.component';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../_services/loader.service';
 import { ApiService } from '../_services/api.service';
+import { Identification } from '../_models/types';
 
 
 
@@ -17,7 +18,7 @@ import { ApiService } from '../_services/api.service';
 })
 export class DocsPage implements OnInit {
 
-  identification: any = {};
+  identification: Identification = {};
 
   constructor(
     private router: Router,
@@ -60,21 +61,26 @@ export class DocsPage implements OnInit {
     modal.onWillDismiss().then((data: any) => {
       if (data.data.cancelled) {
       } else {
-        if (side === "passport") {
-          this.scanPassport();
+        if (side === "selfie") {
+          const formData = new FormData();
+          formData.append('file',this.dataStore.selfie.selfieFile);
+          this.saveImage('selfie', formData);
         } else if (side === "signature") {
           this.identification = data.data.data;
-          if (this.dataStore.identification.nationalId) {
-            this.saveImage("signature", {
-              file: this.identification.signatureFile,
-              idType: "",
-              imageType: "SIGNATURE",
-              match: "",
-              nationalId: "",
-            });
-          } else {
-            this.toastr.info("Scan ID First");
-          }
+          const formData = new FormData();
+          formData.append('file', this.identification.signatureFile);
+          this.saveImage("signature", formData);
+          // if (this.dataStore.identification.nationalId) {
+          //   this.saveImage("signature", {
+          //     file: this.identification.signatureFile,
+          //     idType: "",
+          //     imageType: "SIGNATURE",
+          //     match: "",
+          //     nationalId: "",
+          //   });
+          // } else {
+          //   this.toastr.info("Scan ID First");
+          // }
         } else {
         }
       }
@@ -144,7 +150,6 @@ export class DocsPage implements OnInit {
           break;
         case "signature":
           this.loader.savingSignature = true;
-
           try {
             this.apiService.saveSignatureImage(payload).subscribe(
              {
@@ -152,7 +157,6 @@ export class DocsPage implements OnInit {
                 if (res.successful) {
                   this.loader.savingSignature = false;
                   this.loader.savedSignature = true;
-                  this.dataStore.identification.backSaved = true;
                 } else {
                   this.loader.savingSignature = false;
                   this.toastr.error(res.message);
@@ -169,12 +173,36 @@ export class DocsPage implements OnInit {
             this.toastr.error("Error saving signature try again.");
           }
           break;
+          case "selfie":
+            this.loader.savingSelfie = true;
+            try {
+              this.apiService.saveSelfieImage(payload).subscribe(
+                {
+                next: (res) => {
+                  if (res.successful) {
+                    this.loader.savingSelfie = false;
+                    this.loader.savedSelfie = true;
+                  } else {
+                    this.loader.savingSelfie = false;
+                    this.toastr.error(res.message);
+                  }
+                },
+                error: (error) => {
+                  this.loader.savingSignature = false;
+                  this.toastr.error("Error saving signature try again.");
+                }
+                }
+              ); // end api call
+            } catch (error) {
+              this.loader.savingSignature = false;
+              this.toastr.error("Error saving signature try again.");
+            }
+            break;
         default:
           break;
       }
     }
 
-
-  proceedToPreferences(){}
+  complete(){}
 
 }

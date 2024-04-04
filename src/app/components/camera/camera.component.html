@@ -26,13 +26,20 @@
     </span>
   </h3>
   <div>
-    <webcam class="mtn" [height]="240" [width]="640" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+    <webcam *ngIf="side !== 'selfie'"  class="mtn" [height]="240" [width]="640" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
             [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
             [videoOptions]="videoOptions"
             [imageQuality]="1"
             (cameraSwitched)="cameraWasSwitched($event)"
             (initError)="handleInitError($event)"
     ></webcam>
+    <webcam *ngIf="side === 'selfie'"  class="mtn" [height]="280" [width]="640" style="border-radius: 50%;" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+    [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+    [videoOptions]="videoOptions"
+    [imageQuality]="1"
+    (cameraSwitched)="cameraWasSwitched($event)"
+    (initError)="handleInitError($event)"
+></webcam>
     <br/>
     <div class="uk-flex uk-flex-center">
       <ion-button  class="actionBtn" (click)="triggerSnapshot();" >

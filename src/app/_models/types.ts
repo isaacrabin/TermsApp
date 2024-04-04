@@ -2,7 +2,7 @@ export interface Identification {
   documentType?: string;
   idType?: string;
   frontIdBase64?: string;
-  frontIdFile?: File;
+  frontIdFile?: any;
   frontIdOcrText?: string;
   ocrKey?: string;
   frontSaved?: boolean;
@@ -13,12 +13,12 @@ export interface Identification {
   passportFile?: File;
   passportSaved?: boolean;
   signatureBase64?: string;
-  signatureFile?: File;
+  signatureFile?: any;
   signatureSaved?: boolean;
   nationalId?: string;
 }
 
 export interface Selfie {
   selfieBase64?: string;
-  selfieFile?: File;
+  selfieFile?: any;
 }
