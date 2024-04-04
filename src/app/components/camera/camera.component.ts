@@ -44,9 +44,13 @@ export class CameraComponent  implements OnInit {
    }
 
    public get videoOptions(): MediaTrackConstraints {
-    const result: MediaTrackConstraints = {};
+    const result: MediaTrackConstraints = {
+    };
     if (this.side === 'selfie') {
         result.facingMode = { ideal: 'user' };
+    }
+    else{
+      result.facingMode = { ideal: "environment" };
     }
     return result;
 }
