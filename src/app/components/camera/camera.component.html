@@ -26,7 +26,7 @@
     </span>
   </h3>
   <div>
-    <webcam  class="mtn" style="border-radius: 50%;" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+    <webcam  class="mtn" [height]="300" style="border-radius: 50%;" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
     [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
     [videoOptions]="videoOptions"
     [imageQuality]="1"
