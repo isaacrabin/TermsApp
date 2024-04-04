@@ -34,10 +34,9 @@
     (initError)="handleInitError($event)"
     ></webcam>
 
-
-    <ul *ngFor="let error of errors" style="color: #fff;">
-      <li>{{error | json}}</li>
-    </ul>
+    <div style="color: #fff;" *ngIf="errors.length > 0">
+      <p class="ion-text-center">Camera permissions Denied. Kindly allow permissions before you continue!</p>
+    </div>
     <br/>
     <div class="uk-flex uk-flex-center">
       <ion-button  class="actionBtn" (click)="triggerSnapshot();" >
