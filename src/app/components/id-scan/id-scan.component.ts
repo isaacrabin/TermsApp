@@ -209,9 +209,8 @@ export class IdScanComponent  implements OnInit {
         backdropDismiss: false,
         cssClass: "my-custom-class",
         header: "CONFIRM",
-        message: `<h5>Please confirm that this is your National ID Number? \n
-                  Note: This number will be used to automatically fetch your KRA PIN
-                  </h5> \n \n
+        message: `<h5>Please confirm that this is your National ID Number?
+                   \n \n
                   <h1>${nationalId}<h1>
                   `,
         buttons: [
