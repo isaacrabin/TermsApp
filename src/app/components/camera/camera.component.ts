@@ -51,8 +51,8 @@ export class CameraComponent  implements OnInit {
     }
     else{
       result.facingMode = { ideal: "environment"};
-      result.width = {min:640,ideal:1920}
-      result.height = {min: 480,ideal: 1080}
+      result.width = {min:500,ideal:1920}
+      result.height = {min: 280,ideal: 1080}
     }
     return result;
 }
