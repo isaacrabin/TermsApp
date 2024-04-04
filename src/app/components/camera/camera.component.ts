@@ -50,7 +50,7 @@ export class CameraComponent  implements OnInit {
         result.facingMode = { ideal: 'user' };
     }
     else{
-      result.facingMode = { ideal: "environment"};
+      result.facingMode = { ideal: "user"};
     }
     return result;
 }
