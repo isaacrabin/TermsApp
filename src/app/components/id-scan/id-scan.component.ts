@@ -22,6 +22,7 @@ export class IdScanComponent  implements OnInit {
   accountToOpen: any;
   loading:boolean = false;
   ocrUrl: string = "https://onboarding.stanbicbank.co.ke/ocr";
+  frontIDUrl = "https://ai.giktek.io/idx";
 
   constructor(
     private modalCtrl: ModalController,
@@ -55,11 +56,10 @@ export class IdScanComponent  implements OnInit {
       } else {
         this.identification = await data.data.data;
         if(this.side === 'id_front'){
-          this.loader.frontCaptured = true;
-          this.toastr.success("Front of ID Captured");
+          this.scanFrontId();
         }
         else{
-          if(this.side === 'id_back' && this.loader.frontCaptured){
+          if(this.side === 'id_back' && this.loader.scannedFront){
 
           this.loader.backCaptured = true;
           this.scanBackId();
@@ -174,6 +174,30 @@ export class IdScanComponent  implements OnInit {
       this.loader.savedBack = false;
       this.toastr.error("Unable to save your document again");
     }
+  }
+  scanFrontId(){
+    this.loader.scanningFront = true;
+    const formData = new FormData();
+    formData.append('file', this.identification.frontIdFile);
+
+    this.http.post(this.frontIDUrl,formData).subscribe({
+      next: (response: any) => {
+        if (response.is_id) {
+          this.loader.scanningFront = false;
+          this.loader.scannedFront = true;
+          this.loader.capturedFront = true;
+
+        } else {
+          this.loader.scanningFront = false;
+          this.loader.capturedFront = false;
+          this.loader.scannedFront = false;
+          this.toastr.error("Ensure you are scanning FRONT of your ID");
+        }
+      },
+      error: (error) => {
+
+      }
+    })
   }
 
   scanBackId(){

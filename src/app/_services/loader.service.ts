@@ -23,6 +23,7 @@ export class LoadingService {
   scannedFront = false;
   frontCaptured = false;
   backCaptured = false;
+  capturedFront = false;
 
   // Selfie
   detectingFace = false;

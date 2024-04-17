@@ -20,7 +20,7 @@
     <div class="ion-padding">
       <div class="uk-container uk-container-xsmall">
         <div class="uk-card uk-card-default uk-width-1-1" (click)="openCamera('id_front')"
-        *ngIf="!loader?.scanningFront && !loader?.savingFront && !loader?.savedFront">
+        *ngIf="!loader?.scanningFront && !loader?.savingFront && !loader?.savedFront && !loader?.capturedFront">
           <div class="uk-card-media-top">
             <img src="assets/images/id_front.png" width="100%" alt="">
           </div>
@@ -47,19 +47,20 @@
           </div>
         </div>
         <div class="uk-card uk-card-default uk-width-1-1"
-        *ngIf="loader?.scanningFront || loader?.savingFront || loader?.savedFront">
+        *ngIf="loader?.scanningFront || loader?.savingFront || loader?.savedFront || loader?.capturedFront">
         <div class="uk-text-center">
-          <span *ngIf="loader?.savedFront"><img class="uk-margin-medium-top" src="assets/icons/saved.png" alt=""></span>
-          <span *ngIf="!loader?.savedFront" class="uk-margin-medium-top"
+          <span *ngIf="loader?.scannedFront"><img class="uk-margin-medium-top" src="assets/icons/saved.png" alt=""></span>
+          <span *ngIf="!loader?.scannedFront" class="uk-margin-medium-top"
             uk-spinner="ratio: 1"></span>
-          <!-- <p *ngIf="loader?.savedFront" class="uk-margin-small-bottom browse2"><strong>Fornt ID Saved</strong></p> -->
+            <p *ngIf="loader?.scannedFront" class="uk-margin-small-bottom browse2"><strong>Scanned Front of ID</strong></p>
+            <br>
+          <p *ngIf="loader?.scanningFront" class="uk-margin-small-bottom browse2"><strong>Scanning Front of ID</strong></p>
           <br>
           <p *ngIf="loader?.savingFront" class="uk-margin-small-bottom browse2"><strong>Saving Front of ID</strong>
           </p><br>
           <p *ngIf="loader?.savedFront" class="uk-margin-small-bottom browse2 uk-text-success"><strong>Front of ID
               Saved</strong></p><br>
-          <p *ngIf="loader?.scannedFront" class="uk-margin-small-bottom browse2"><strong>Front of ID Scanned</strong>
-          </p><br>
+
 
         </div>
       </div>
