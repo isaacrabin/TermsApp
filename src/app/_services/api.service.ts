@@ -9,6 +9,7 @@ import { environment } from "src/environments/environment";
 export class ApiService {
 
   baseUrl = environment.baseUrl;
+  userId: any = sessionStorage.getItem("userId");
 
   constructor(private http: HttpClient){
 
@@ -16,20 +17,20 @@ export class ApiService {
 
     // Save Images
     saveFrontIDImage(payload: any): Observable<any> {
-      return this.http.post(this.baseUrl + '/identity-doc-front', payload,{ headers: {'descriptor':'bb4c5ae1-4ef8-4e96-acc2-a2579640b348' }});
+      return this.http.post(this.baseUrl + '/identity-doc-front', payload,{ headers: {'descriptor': this.userId }});
     }
 
     saveBackIDImage(payload: any): Observable<any> {
       const boundary = this.generateBoundary();
-      return this.http.post(this.baseUrl + '/identity-doc-back', payload,{ headers: {'descriptor':'bb4c5ae1-4ef8-4e96-acc2-a2579640b348' }});
+      return this.http.post(this.baseUrl + '/identity-doc-back', payload,{ headers: {'descriptor': this.userId }});
     }
 
     saveSignatureImage(payload: any): Observable<any> {
-      return this.http.post(this.baseUrl + '/applicant-photo', payload,{ headers: {'descriptor':'bb4c5ae1-4ef8-4e96-acc2-a2579640b348' }});
+      return this.http.post(this.baseUrl + '/applicant-photo', payload,{ headers: {'descriptor': this.userId }});
     }
 
     saveSelfieImage(payload: any): Observable<any> {
-      return this.http.post(this.baseUrl + '/applicant-photo', payload,{ headers: {'descriptor':'bb4c5ae1-4ef8-4e96-acc2-a2579640b348' }});
+      return this.http.post(this.baseUrl + '/applicant-photo', payload,{ headers: {'descriptor': this.userId }});
     }
 
    generateBoundary() {

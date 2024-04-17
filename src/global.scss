@@ -41,16 +41,45 @@
 }
 
 
+@font-face {
+  font-family: "Alfrida Signature";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Alfrida Signature"),
+    url("./assets/fonts/AlfridaSignature.ttf") format("truetype");
+}
+
+  /*
+    Design elements restricted to MOBILE SCREEN only
+*/
+@media only screen and (max-width: 768px) {
+  .desktop-content {
+    display: none;
+    min-width: 100vw !important;
+  }
+}
+
+/*
+    Design element restricted to DESKTOP SCREEN only
+*/
+@media only screen and (min-width: 768px) {
+  .mobile-content {
+    display: none;
+    min-width: 80vw !important;
+  }
+}
+
+
 html,
 body {
   // background-color: #e0e0e0;
   // background: linear-gradient(rgba(0, 68, 255, 0.794), rgba(10, 34, 64, 1));
-
+ font-family: "Muli" roboto_regular !important;
   background-color: #d3d3d3;
   // background-color: #ffffff;
   padding: 0;
   margin: 0 auto;
-  max-width: 810px !important;
+  // max-width: 810px !important;
 }
 
 /* Transparent standard */
@@ -162,21 +191,4 @@ ionic-selectable {
   white-space: normal !important;
 }
 
-  /*
-    Design elements restricted to MOBILE SCREEN only
-*/
-@media(max-width: 768px) {
-  .desktop-content {
-    display: none;
-  }
-}
 
-/*
-    Design element restricted to DESKTOP SCREEN only
-*/
-@media(min-width: 768px) {
-
-  .mobile-content {
-    display: none;
-  }
-}

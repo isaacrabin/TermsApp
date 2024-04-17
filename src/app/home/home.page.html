@@ -1,4 +1,4 @@
-<ion-content class="overlay-container">
+<ion-content class="overlay-container mobile-content">
   <div class="image-ill animate__animated animate animate__pulse animate__infinite animate__slower">
     <img src="assets/images/id_trns.png" alt="">
   </div>
@@ -15,5 +15,53 @@
   fill="solid" expand="block" shape="round"> Proceed to Upload Documents
 </ion-button>
 </div>
-
 </ion-content>
+
+
+<div class="desktop-content">
+  <div class="header-section">
+      <div>
+          <h3>CloudBook</h3>
+      </div>
+      <div class="home-btn">
+          <ion-button color="default"  fill="outline">
+              <a style="color: #444; text-decoration: none;">
+                  <ion-icon name="home" style="padding: 2px;"></ion-icon>
+                  Home
+              </a>
+             </ion-button>
+      </div>
+
+
+  </div>
+
+  <div class="body-section">
+      <div class="overlay"></div>
+      <div class="body-content">
+          <h1 class="font-bold text-head animate__animated animate__bounce" style="font-size: 40px;">CloudBook <br>
+              Bill Presentment
+          </h1>
+          <p class="text-desc">Experience our bill presentment platform that enables Billers <br> to bill their payers and automatically reconcile payments. <br> Get to activate your account by uploading your identification documents. <br>
+             (i.e a copiy of your <strong>national ID </strong>and <strong> your Passport photo</strong>)</p>
+             <div>
+              <ion-button color="primary" mode="ios" routerLink="/qr-scan">Proceed To Upload Documents</ion-button>
+             </div>
+      </div>
+      <div class="body-button">
+          <div class="col-lg-9" data-aos="fade-up" data-aos-delay="500">
+              <form method="post" class="form-box" id="submitEmail" onsubmit="return false" autocomplete="off">
+              <!-- <h3 class="h4 text-black mb-4">Need an Account?</h3> -->
+              <div class="form-group">
+              <!-- <input type="text" name="email" class="form-control" placeholder="Email Addresss"> -->
+              </div>
+              <div class="form-group text-center animate__animated animate animate__pulse animate__infinite animate__slower">
+                <img src="assets/images/id_trns.png" height="300" width="300" alt="">
+                  <h4 class="text-intro ion-text-center">Activate your Account!</h4>
+              </div>
+              </form>
+              </div>
+
+      </div>
+
+  </div>
+  </div>

@@ -11,10 +11,11 @@ import { CameraComponent } from './components/camera/camera.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideLottieOptions } from 'ngx-lottie';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [AppComponent,CameraComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule,IonicModule.forRoot({innerHTMLTemplatesEnabled: true}), AppRoutingModule,  WebcamModule],
+  imports: [BrowserModule, BrowserAnimationsModule, QRCodeModule, FormsModule, ReactiveFormsModule,IonicModule.forRoot({innerHTMLTemplatesEnabled: true}), AppRoutingModule,  WebcamModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideLottieOptions({
       player: () => import('lottie-web'),

@@ -1,0 +1,160 @@
+.wrapper{
+    width: 100vw !important;
+    height: 100%;
+    .dot-div{
+        height: 60px;
+        width: 60px;
+        border: 2px solid #A9A9A9;
+        border-radius: 50px;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        animation:animate 4s linear infinite;
+    }
+    .dot{
+        height: 10px;
+        width: 10px;
+        border-radius: 50px;
+        background: rgba(235, 233, 224, 0.6);
+        position: absolute;
+        top: 20%;
+        right: 20%;
+
+    }
+    .dot-div:nth-child(1){
+        top: 20%;
+        left: 20%;
+        animation:animate 8s linear infinite;
+    }
+
+    .dot-div:nth-child(2){
+        top: 60%;
+        left: 80%;
+        animation:animate 10s linear infinite;
+    }
+    .dot-div:nth-child(3){
+        top: 40%;
+        left: 40%;
+        animation:animate 5s linear infinite;
+    }
+    .dot-div:nth-child(4){
+        top: 66%;
+        left: 30%;
+        animation:animate 7s linear infinite;
+    }
+    .dot-div:nth-child(5){
+        top: 90%;
+        left: 10%;
+        animation:animate 9s linear infinite;
+    }
+    .dot-div:nth-child(6){
+        top: 30%;
+        left: 60%;
+        animation:animate 5s linear infinite;
+    }
+    .dot-div:nth-child(7){
+        top: 70%;
+        left: 20%;
+        animation:animate 5s linear infinite;
+    }
+    .dot-div:nth-child(8){
+        top: 75%;
+        left: 60%;
+        animation:animate 5s linear infinite;
+    }
+    .dot-div:nth-child(9){
+        top: 50%;
+        left: 50%;
+        animation:animate 6s linear infinite;
+    }
+    .dot-div:nth-child(10){
+        top: 45%;
+        left: 20%;
+        animation:animate 6s linear infinite;
+    }
+    .dot-div:nth-child(11){
+        top: 10%;
+        left: 90%;
+        animation:animate 9s linear infinite;
+    }
+    .dot-div:nth-child(12){
+        top: 20%;
+        left: 70%;
+        animation:animate 7s linear infinite;
+    }
+    .dot-div:nth-child(13){
+        top: 20%;
+        left: 20%;
+        animation:animate 8s linear infinite;
+    }
+    .dot-div:nth-child(14){
+        top: 60%;
+        left: 5%;
+        animation:animate 6s linear infinite;
+    }
+    .dot-div:nth-child(15){
+        top: 90%;
+        left: 80%;
+        animation:animate 5s linear infinite;
+    }
+    .dot-div:nth-child(16){
+        top: 9%;
+        left: 30%;
+        animation:animate 3s linear infinite;
+    }
+
+    @keyframes animate {
+        0%{
+            transform: scale(0) translateY(0) rotate(70deg);
+        }
+        100%{
+            transform: scale(1.3) translateY(-100) rotate(360deg);
+        }
+
+
+    }
+
+    .content{
+        max-width: 800px !important;
+        background: #FAF9F6;
+        height: auto;
+        width: 100%;
+        margin: auto;
+        border-radius: 20px;
+        padding: 30px;
+        margin-top: 30px;
+
+        .content-header{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+
+        }
+        .header-title{
+          padding-right: 4px;
+          font-family: "Alfrida Signature";
+          font-weight: 800;
+          color: #444444;
+          font-size: 40px;
+        }
+
+
+        .back-btn{
+            cursor: pointer;
+        }
+        .desc-segment{
+        background-color: #f2f3f4;
+
+        border-radius: 10px;
+        padding:6px;
+        }
+
+        .row-sec{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+        }
+
+    }
+}

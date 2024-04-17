@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./selfie/selfie.module').then( m => m.SelfiePageModule)
   },
   {
+    path: 'qr-scan',
+    loadChildren: () => import('./qr-scan/qr-scan.module').then( m => m.QrScanPageModule)
+  },
+  {
     path: 'docs-upload',
     loadChildren: () => import('./docs/docs.module').then( m => m.DocsPageModule)
   },

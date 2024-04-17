@@ -1,0 +1,57 @@
+<div class="wrapper">
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+  <div class="dot-div"><span class="dot"></span></div>
+
+
+  <div class="content">
+    <div class="content-header">
+     <div class="back-btn mb-4" (click)="onClick()">
+       <ion-icon mode="md" name="chevron-back-outline" color="primary"></ion-icon> <span style="color: #444444;">Back</span>
+     </div>
+     <div>
+       <h2 class="header-title">CloudBook</h2>
+     </div>
+    </div>
+     <div class="mb-3 animate__animated animate__pulse animate__slower animate__infinite">
+       <img src="assets/images/phone.svg" alt="">
+     </div>
+     <div class="">
+       <h4 class="mb-1"><strong>Use your mobile device to proceed</strong> </h4>
+       <p>Scan the QR Code below and follow the steps on your phone to create an account.</p>
+       <div class="row-sec">
+         <div class="col qr-segment">
+           <qrcode [qrdata]="this.url" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+         </div>
+         <div class="col desc-segment p-4">
+           <h5><strong>Directions:</strong></h5>
+           <ol>
+             <li>Open the camera app on your phone</li>
+             <li>Scan the QR code to the left</li>
+             <li>Follow the steps on your phone</li>
+           </ol>
+         </div>
+       </div>
+       <div class="mt-2 bg-red">
+         <p><strong>Note: </strong>You will be required to upload photos of your identification documents(i.e. Your <strong>National ID and selfie</strong>). For a better experience scan this code and complete these actions from your mobile device.</p>
+     </div>
+
+     </div>
+
+   </div>
+
+
+</div>
