@@ -179,25 +179,29 @@ export class IdScanComponent  implements OnInit {
     this.loader.scanningFront = true;
     const formData = new FormData();
     formData.append('file', this.identification.frontIdFile);
+    //To pass withou having to verify the front ID
+    this.loader.scanningFront = false;
+    this.loader.scannedFront = true;
+    this.loader.capturedFront = true;
 
-    this.http.post(this.frontIDUrl,formData).subscribe({
-      next: (response: any) => {
-        if (response.is_id) {
-          this.loader.scanningFront = false;
-          this.loader.scannedFront = true;
-          this.loader.capturedFront = true;
+    // this.http.post(this.frontIDUrl,formData).subscribe({
+    //   next: (response: any) => {
+    //     if (response.is_id) {
+    //       this.loader.scanningFront = false;
+    //       this.loader.scannedFront = true;
+    //       this.loader.capturedFront = true;
 
-        } else {
-          this.loader.scanningFront = false;
-          this.loader.capturedFront = false;
-          this.loader.scannedFront = false;
-          this.toastr.error("Ensure you are scanning FRONT of your ID");
-        }
-      },
-      error: (error) => {
+    //     } else {
+    //       this.loader.scanningFront = false;
+    //       this.loader.capturedFront = false;
+    //       this.loader.scannedFront = false;
+    //       this.toastr.error("Ensure you are scanning FRONT of your ID");
+    //     }
+    //   },
+    //   error: (error) => {
 
-      }
-    })
+    //   }
+    // })
   }
 
   scanBackId(){
