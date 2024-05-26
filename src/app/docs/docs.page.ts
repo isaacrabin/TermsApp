@@ -2,7 +2,7 @@
 import { DataStoreService } from './../_services/datastore.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { CameraComponent } from '../components/camera/camera.component';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../_services/loader.service';
@@ -27,6 +27,7 @@ export class DocsPage implements OnInit {
     private modalCtrl: ModalController,
     private toastr: ToastrService,
     public loader: LoadingService,
+    private alertCtrl: AlertController,
     private apiService: ApiService,
   ) { }
 
@@ -35,14 +36,8 @@ export class DocsPage implements OnInit {
 
   selectDocType(type: string) {
     switch (type) {
-      case "ID":
-        this.viewTerms("terms");
-        break;
-      case "PASSPORT":
-        this.presentModal("passport");
-        break;
-      case "SIGNATURE":
-        this.presentModal("signature");
+      case "OTP":
+        this.inputOtp();
         break;
       case "SELFIE":
         this.presentModal("selfie");
@@ -78,26 +73,7 @@ export class DocsPage implements OnInit {
     return await modal.present();
   }
 
-  async viewTerms(side: string){
-    const modal = await this.modalCtrl.create({
-      component: TermsComponent,
-      cssClass: "my-custom-class",
-      componentProps: { side },
-    });
 
-    modal.onWillDismiss().then((data: any) => {
-      if (data.data.cancelled) {
-      } else {
-        this.loader.loading = true;
-        setTimeout(() => {
-          this.loader.loading = false;
-          this.loader.termsAccepted = true;
-        }, 2000);
-
-      }
-    });
-    return await modal.present();
-  }
 
 
 
@@ -222,6 +198,44 @@ export class DocsPage implements OnInit {
 
   complete(){
     this.router.navigate(['complete']);
+  }
+
+  async inputOtp() {
+    const alert = await this.alertCtrl.create({
+      backdropDismiss: false,
+      cssClass: "my-custom-class",
+      header: "Confirm OTP",
+      mode: 'md',
+      message: `<h6>Enter the OTP sent to your phone <em>07****6560</em> to confirm your consent.
+                </h6>
+                `,
+      buttons: [
+        {
+          text: "OK",
+          handler: (data: any) => {
+            // Save the front id
+            this.loader.loading = true;
+            setTimeout(() => {
+              this.loader.loading = false;
+              this.loader.termsAccepted = true;
+              this.toastr.success("Your consent has been sent");
+              this.router.navigate(['welcome']);
+            }, 2000);
+          },
+        },
+      ],
+      inputs: [
+        {
+          placeholder: 'OTP',
+          name: 'otp',
+          attributes: {
+            maxlength: 6,
+          },
+        },
+      ]
+
+    });
+    await alert.present();
   }
 
 }

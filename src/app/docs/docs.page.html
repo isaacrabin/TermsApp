@@ -8,22 +8,20 @@
 <div style="height: 100vh; overflow-y: scroll;">
   <div style="height: 30vh;">
     <div style="padding-left: 20px; padding-top:30px;">
-      <h4 class="browse ion-margin-top" style="width: 80%;">You need to accept and take
-        <span style="color: #0033aa;"><strong>Terms & Conditions, </strong>
-          <strong>Privacy Policy </strong>
-        </span> and your <span style="color: #0033aa;"><strong>selfie </strong>
-
+      <h4 class="browse ion-margin-top" style="width: 80%;">You need to validate the
+        <span style="color: #0033aa;"><strong> OTP,</strong>
+        </span> sent to your phone and take a <span style="color: #0033aa;"><strong>selfie </strong>
         </span>
       </h4>
     </div>
   </div>
   <div style="height: 70vh;" class="uk-flex-center" data-frmcontainer="Identification documents form" >
-    <div style="height: 25%; justify-content: center; " class="uk-flex-center" (click)="selectDocType('ID')">
+    <div style="height: 25%; justify-content: center; " class="uk-flex-center" (click)="selectDocType('OTP')">
       <div class="uk-container uk-container-xsmall">
         <div class="uk-card uk-card-default uk-card-body  identification-cards" >
           <div class="uk-text-center" uk-grid>
             <div class="uk-width-3-4">
-              <h4 class="browse2 uk-align-left" style="font-size: 12px;"><strong>Terms & Conditions</strong></h4>
+              <h4 class="browse2 uk-align-left" style="font-size: 12px;"><strong>Validate OTP</strong></h4>
             </div>
             <div class="uk-width-1-4">
               <span class="uk-align-right" *ngIf="!loader.loading && !loader.termsAccepted">
@@ -45,7 +43,7 @@
         <div class="uk-card uk-card-default uk-card-body  identification-cards" >
           <div class="uk-text-center" uk-grid>
             <div class="uk-width-3-4">
-              <h4 class="browse2 uk-align-left" style="font-size: 12px;"><strong>Selfie</strong></h4>
+              <h4 class="browse2 uk-align-left" style="font-size: 12px;"><strong>Take Selfie</strong></h4>
             </div>
             <div class="uk-width-1-4">
               <span class="uk-align-right" *ngIf="!loader.savedSelfie && !loader.savingSelfie">

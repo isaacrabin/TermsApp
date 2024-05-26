@@ -2,6 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IonicModule, ModalController } from '@ionic/angular';
 
 @Component({
@@ -13,7 +14,7 @@ export class TermsComponent  implements OnInit {
 
   termsAccepted: boolean = false;
 
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController, private router: Router) { }
 
   ngOnInit() {}
 
@@ -24,6 +25,7 @@ export class TermsComponent  implements OnInit {
   checkboxChanged() {
     // Enable checkbox only when the user scrolls to the end and agrees
     this.modalController.dismiss(this.termsAccepted);
+
     // if(this.termsAccepted){
     //   setTimeout(() => {
 

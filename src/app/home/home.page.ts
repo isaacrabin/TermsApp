@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { WebcamInitError, WebcamImage, WebcamUtil } from 'ngx-webcam';
 import { Subject, Observable, map } from 'rxjs';
+import { LoadingService } from '../_services/loader.service';
+import { TermsComponent } from '../docs/terms/terms.component';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +33,8 @@ export class HomePage {
   constructor(
     private modalController: ModalController,
     private router: Router,
+    private modalCtrl: ModalController,
+    private loader: LoadingService,
     private route: ActivatedRoute
     ) {
       this.route.params.subscribe(params => {
@@ -41,7 +45,8 @@ export class HomePage {
 
 
   async openTerms() {
-    this.router.navigate(['docs-upload']);
+    this.viewTerms('terms');
+    // this.router.navigate(['docs-upload']);
     // const modal = await this.modalController.create({
     //   // component: TermsComponent,
     //   // cssClass: 'terms-modal',
@@ -60,5 +65,24 @@ export class HomePage {
 
   checkboxChanged(){
 
+  }
+
+  async viewTerms(side: string){
+    const modal = await this.modalCtrl.create({
+      component: TermsComponent,
+      cssClass: "my-custom-class",
+      componentProps: { side },
+    });
+
+    modal.onWillDismiss().then((data: any) => {
+      if (data.data.cancelled) {
+      } else {
+        this.router.navigate(['docs-upload']);
+        this.loader.loading = false;
+        this.loader.termsAccepted = true;
+
+      }
+    });
+    return await modal.present();
   }
 }
