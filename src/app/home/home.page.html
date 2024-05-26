@@ -1,50 +1,42 @@
 <ion-content class="overlay-container mobile-content">
   <div class="image-ill animate__animated animate animate__pulse animate__infinite animate__slower">
-    <img src="assets/images/id_trns.png" alt="">
+    <div class="uk-margin-large-bottom">
+      <img src="assets/images/icon.png" alt="" height="100" width="100">
+    </div>
   </div>
   <ion-title class="ion-margin-top ion-text-start">
-    Thank you <br> for choosing Cloudbook
+    Thank you <br> for choosing Stanbic Bank
   </ion-title>
   <div style="padding: 20px 20px 20px 20px;">
-    <p>As part of the onboarding process you need to upload a copy of your <strong>National ID</strong> and <strong>passport photo</strong></p>
+    <p>As part of the onboarding process, you need to accept Terms & Conditions and the Privacy policy of Stanbic Bank.
   </div>
 <div class="uk-flex uk-flex-center uk-margin-xlarge-top">
 
   <ion-button (click)="openTerms()" color="primary" mode="ios"
   class="slide-info__btn ion-margin-top "
-  fill="solid" expand="block" shape="round"> Proceed to Upload Documents
+  fill="solid" expand="block" shape="round"> Proceed to Accept Terms
 </ion-button>
 </div>
 </ion-content>
 
 
 <div class="desktop-content">
-  <div class="header-section">
-      <div>
-          <h3>CloudBook</h3>
-      </div>
-      <div class="home-btn">
-          <ion-button color="default"  fill="outline">
-              <a style="color: #444; text-decoration: none;">
-                  <ion-icon name="home" style="padding: 2px;"></ion-icon>
-                  Home
-              </a>
-             </ion-button>
-      </div>
-
-
-  </div>
 
   <div class="body-section">
       <div class="overlay"></div>
+
+      <div class="uk-position-top-left uk-padding">
+        <img src="assets/images/icon.png" height="80" width="80" alt="">
+      </div>
       <div class="body-content">
-          <h1 class="font-bold text-head animate__animated animate__bounce" style="font-size: 40px;">CloudBook <br>
-              Bill Presentment
+          <h1 class="font-bold text-head animate__animated animate__bounce" style="font-size: 40px; font-weight: 800;">Stanbic Bank <br>
+              Online Account Opening
           </h1>
-          <p class="text-desc">Experience our bill presentment platform that enables Billers <br> to bill their payers and automatically reconcile payments. <br> Get to activate your account by uploading your identification documents. <br>
-             (i.e a copiy of your <strong>national ID </strong>and <strong> your Passport photo</strong>)</p>
+          <p class="text-desc">Welcome, <br>
+             You have been redirected to acivate your Account creation process by Accepting the Terms & Conditions and the Privacy policy of Stanbic Bank.  <br>
+             </p>
              <div>
-              <ion-button color="primary" mode="ios" routerLink="/qr-scan">Proceed To Upload Documents</ion-button>
+              <ion-button color="primary" mode="ios" routerLink="/qr-scan">Proceed To Accept Terms</ion-button>
              </div>
       </div>
       <div class="body-button">
@@ -56,11 +48,10 @@
               </div>
               <div class="form-group text-center animate__animated animate animate__pulse animate__infinite animate__slower">
                 <img src="assets/images/id_trns.png" height="300" width="300" alt="">
-                  <h4 class="text-intro ion-text-center">Activate your Account!</h4>
+                  <!-- <h4 class="text-intro ion-text-center">Activate your Account!</h4> -->
               </div>
               </form>
               </div>
-
       </div>
 
   </div>

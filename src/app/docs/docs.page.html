@@ -8,10 +8,10 @@
 <div style="height: 100vh; overflow-y: scroll;">
   <div style="height: 30vh;">
     <div style="padding-left: 20px; padding-top:30px;">
-      <h4 class="browse ion-margin-top" style="width: 80%;">We need to validate your documents. Please take a photo of your
-        <span style="color: #F7931E;"><strong>National ID</strong>
-        </span>, <span style="color: #F7931E;"><strong>Signature </strong>
-        </span> & <span style="color: #F7931E;"><strong>Selfie</strong>
+      <h4 class="browse ion-margin-top" style="width: 80%;">You need to accept and take
+        <span style="color: #0033aa;"><strong>Terms & Conditions </strong>
+        </span> & your <span style="color: #0033aa;"><strong>selfie </strong>
+
         </span>
       </h4>
     </div>
@@ -22,14 +22,14 @@
         <div class="uk-card uk-card-default uk-card-body  identification-cards" >
           <div class="uk-text-center" uk-grid>
             <div class="uk-width-3-4">
-              <h4 class="browse2 uk-align-left"><strong>National Id</strong></h4>
+              <h4 class="browse2 uk-align-left"><strong>Terms & Conditions</strong></h4>
             </div>
             <div class="uk-width-1-4">
-              <span class="uk-align-right" *ngIf="!loader.savedFront && !loader.savedBack">
+              <span class="uk-align-right" *ngIf="!loader.loading && !loader.termsAccepted">
                 <ion-icon class="iconSize" style="color: rgb(7, 7, 7);" name="chevron-forward-outline"></ion-icon>
               </span>
-              <span class="uk-align-right" uk-spinner="ratio: 1" *ngIf="loader.savingFront && loader.savingBack"></span>
-              <span class="uk-align-right" *ngIf="loader.savedFront && loader.savedBack">
+              <span class="uk-align-right" uk-spinner="ratio: 1" *ngIf="loader.loading"></span>
+              <span class="uk-align-right" *ngIf="loader.termsAccepted">
                 <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
               </span>
             </div>
@@ -37,26 +37,7 @@
         </div>
       </div>
     </div>
-    <!-- <div style="height: 25%; justify-content: center;" (click)="selectDocType('SIGNATURE')">
-      <div class="uk-container uk-container-xsmall">
-        <div class="uk-card uk-card-default uk-card-body  identification-cards" >
-          <div class="uk-text-center" uk-grid>
-            <div class="uk-width-3-4">
-              <h4 class="browse2 uk-align-left"><strong>Signature</strong></h4>
-            </div>
-            <div class="uk-width-1-4">
-              <span class="uk-align-right" *ngIf="!loader.savedSignature && !loader.savingSignature">
-                <ion-icon class="iconSize" style="color: rgb(7, 7, 7);" name="chevron-forward-outline"></ion-icon>
-              </span>
-              <span class="uk-align-right" uk-spinner="ratio: 1" *ngIf="loader.savingSignature"></span>
-              <span class="uk-align-right" *ngIf="loader.savedSignature">
-                <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
+
 
     <div style="height: 25%; width: 100%; justify-content: center;" (click)="selectDocType('SELFIE')">
       <div class="uk-container uk-container-xsmall">
@@ -81,7 +62,7 @@
     <div style="height: 25%;">
       <div class="uk-margin-medium-bottom uk-margin-small-left  uk-margin-small-right uk-margin-small-top">
         <ion-button class="ion-text-center" expand="block" mode="ios" shape="round" type="button"
-          [disabled]="!loader.savedBack || !loader.savedFront || !loader.savedSelfie"
+          [disabled]="!loader.termsAccepted || !loader.savedSelfie"
           (click)="complete()">
           Done
         </ion-button>

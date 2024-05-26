@@ -5,6 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class LoadingService {
   loading = false;
+  termsAccepted = false;
+
+
 
   // Identification
   scanningPassport = false;

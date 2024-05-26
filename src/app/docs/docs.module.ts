@@ -13,6 +13,7 @@ import { DataStoreService } from '../_services/datastore.service';
 import { LoadingService } from '../_services/loader.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { TermsComponent } from './terms/terms.component';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     DocsPageRoutingModule,
     HttpClientModule
   ],
-  declarations: [DocsPage, IdScanComponent],
+  declarations: [DocsPage, IdScanComponent,TermsComponent],
   providers:[ApiService,DataStoreService,LoadingService,ToastrService,HttpClient]
 })
 export class DocsPageModule {}

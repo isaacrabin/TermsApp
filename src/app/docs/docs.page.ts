@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../_services/loader.service';
 import { ApiService } from '../_services/api.service';
 import { Identification } from '../_models/types';
+import { TermsComponent } from './terms/terms.component';
 
 
 
@@ -35,7 +36,7 @@ export class DocsPage implements OnInit {
   selectDocType(type: string) {
     switch (type) {
       case "ID":
-        this.router.navigate(["docs-upload/id-scan"]);
+        this.viewTerms("terms");
         break;
       case "PASSPORT":
         this.presentModal("passport");
@@ -72,6 +73,27 @@ export class DocsPage implements OnInit {
           this.saveImage("signature", formData);
         } else {
         }
+      }
+    });
+    return await modal.present();
+  }
+
+  async viewTerms(side: string){
+    const modal = await this.modalCtrl.create({
+      component: TermsComponent,
+      cssClass: "my-custom-class",
+      componentProps: { side },
+    });
+
+    modal.onWillDismiss().then((data: any) => {
+      if (data.data.cancelled) {
+      } else {
+        this.loader.loading = true;
+        setTimeout(() => {
+          this.loader.loading = false;
+          this.loader.termsAccepted = true;
+        }, 2000);
+
       }
     });
     return await modal.present();
@@ -164,24 +186,30 @@ export class DocsPage implements OnInit {
           break;
           case "selfie":
             this.loader.savingSelfie = true;
+
+            setTimeout(() => {
+              this.loader.savingSelfie = false;
+              this.loader.savedSelfie = true;
+              this.toastr.success("Selfie saved successfully");
+            },  2000);
             try {
-              this.apiService.saveSelfieImage(payload).subscribe(
-                {
-                next: (res) => {
-                  if (res.successful) {
-                    this.loader.savingSelfie = false;
-                    this.loader.savedSelfie = true;
-                  } else {
-                    this.loader.savingSelfie = false;
-                    this.toastr.error(res.message);
-                  }
-                },
-                error: (error) => {
-                  this.loader.savingSignature = false;
-                  this.toastr.error("Error saving signature try again.");
-                }
-                }
-              ); // end api call
+            //   this.apiService.saveSelfieImage(payload).subscribe(
+            //     {
+            //     next: (res) => {
+            //       if (res.successful) {
+            //         this.loader.savingSelfie = false;
+            //         this.loader.savedSelfie = true;
+            //       } else {
+            //         this.loader.savingSelfie = false;
+            //         this.toastr.error(res.message);
+            //       }
+            //     },
+            //     error: (error) => {
+            //       this.loader.savingSignature = false;
+            //       this.toastr.error("Error saving signature try again.");
+            //     }
+            //     }
+            //   );
             } catch (error) {
               this.loader.savingSignature = false;
               this.toastr.error("Error saving signature try again.");

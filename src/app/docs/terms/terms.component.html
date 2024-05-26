@@ -1,0 +1,83 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Terms and Conditions</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="terms-content">
+  <!-- Your terms and conditions content here -->
+  <div class="terms-text">
+    <h5 style="font-weight: 500; color: #0033aa;">Confidentiality</h5>
+    <!-- Large content for terms and conditions -->
+   1. We will treat each
+    other's Confidential Information as confidential and
+    We will not disclose such Confidential Information to
+    anyone else, the only exceptions being as set out in
+    this clause 1.
+
+    <br><br>
+    2. You agree that the Bank will be entitled to share Your
+    Confidenal Informatioon between the Standard Bank
+    Group, if necessary for the purposes of the Services
+    connected with an Account.
+    <br><br>
+    3. Regardless of anything else in these terms and
+    conditions, the Bank will always be entitled to
+    disclose Your Confidential Information to a third party
+    if it is necessary for the proper Operation of the
+    Services connected with an Account.
+    <br><br>
+    4. The mutual obligations in this clause 1 will continue to
+    apply even after these terms and conditions have
+    ended and You no longer make use of the Services
+    connected with an Account.
+    <br><br>
+    5. You agree that the Confidential Information will not
+    be disclosed to anyone except to the following classes
+    of people or in the following exceptional
+    circumstances:
+    <div class="tabcontent">     
+      <p>
+        (i) where the Bank is legally compelled to do so under
+        any Kenyan or any foreign Laws as may be applicable
+        from time to time (including without limitation, the
+        United States' Foreign Account Tax Compliance Act
+        (FATCA) or such similar Law in any relevant
+        jurisdiction any anti-money laundering legislation and
+        any data protection legislation);
+      </p>
+      <p>
+        (ii) to the Bank's permited parties, professional advisers,
+        service providers or independent contractors to, or
+        agents of, the permited parties, such as debt
+        collection agencies, data processing firms and
+        correspondents who are under a duty of
+        confidentiality to the Bank or the Bank's permited
+        parties;
+      </p>
+      <p>
+        (iii) to any actual or potential participant (a party which
+        desires to enter into a contract with us which might
+        affect Your rights under Our banking agreement), or
+        assignee (a person to whom any of Our rights or
+        obligations under this Agreement are legally
+        transferred), or any officer, employee, agent or
+        adviser of any of them;
+      </p>
+    </div>
+    <br>
+    6. You will find Our Processing practices and privacy
+    statement in the Standard Bank Group's websites or
+    on request.
+    <br>
+    <span style="font-weight: bold; color: #0033aa; cursor: pointer;"><a href="https://www.stanbicbank.co.ke/static_file/Kenya/Downloadable%20files/GeneralTerms&Conditions21072020.pdf">Read More...</a></span>
+    <br><br>
+    <ion-item lines="none" style="background: #c0e6f0; border-radius: 5px; vertical-align: middle; margin-right: 10px; margin-left: 10px;">
+      <ion-label class="uk-text-primary" style="font-weight: 500;">Accept Terms and Conditions</ion-label>
+      <ion-checkbox [(ngModel)]="termsAccepted" (ionChange)="checkboxChanged()"></ion-checkbox>
+    </ion-item>
+  </div>
+</ion-content>
