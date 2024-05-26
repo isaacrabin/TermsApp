@@ -23,11 +23,12 @@ export class TermsComponent  implements OnInit {
 
   checkboxChanged() {
     // Enable checkbox only when the user scrolls to the end and agrees
-    if(this.termsAccepted){
-      setTimeout(() => {
-        this.modalController.dismiss(this.termsAccepted);
-      }, 200);
-    }
+    this.modalController.dismiss(this.termsAccepted);
+    // if(this.termsAccepted){
+    //   setTimeout(() => {
+
+    //   }, 200);
+    // }
 
   }
 
