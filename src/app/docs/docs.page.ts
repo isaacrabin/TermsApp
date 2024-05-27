@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../_services/loader.service';
 import { ApiService } from '../_services/api.service';
 import { Identification } from '../_models/types';
-import { TermsComponent } from './terms/terms.component';
+
 
 
 
@@ -219,7 +219,7 @@ export class DocsPage implements OnInit {
               this.loader.loading = false;
               this.loader.termsAccepted = true;
               this.toastr.success("Your consent has been sent");
-              this.router.navigate(['welcome']);
+              // this.router.navigate(['welcome']);
             }, 2000);
           },
         },

@@ -7,7 +7,6 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { WebcamModule } from 'ngx-webcam';
 
-
 @NgModule({
   imports: [
     CommonModule,

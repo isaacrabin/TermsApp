@@ -6,8 +6,11 @@ import { Router } from '@angular/router';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-terms',
+  standalone: true,
+  imports: [IonicModule, FormsModule,ReactiveFormsModule],
   templateUrl: './terms.component.html',
   styleUrls: ['./terms.component.scss']
 })
@@ -29,7 +32,6 @@ export class TermsComponent  implements OnInit {
   checkboxChanged() {
     // Enable checkbox only when the user scrolls to the end and agrees
     this.modalController.dismiss(this.termsAccepted);
-
     this.toastr.success("Proceed to confirm OTP and take selfie");
 
     // if(this.termsAccepted){
